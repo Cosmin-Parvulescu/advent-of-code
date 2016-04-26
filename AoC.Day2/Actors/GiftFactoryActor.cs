@@ -9,6 +9,7 @@ namespace AoC.Day2.Actors
     public class GiftFactoryActor : TypedActor, IHandle<GiftFactoryMessages.HandleGiftOrders>
     {
         private int _neededGiftPaper = 0;
+        private int _neededRibbon = 0;
 
         private readonly IActorRef _elfActorRef;
 
@@ -22,11 +23,12 @@ namespace AoC.Day2.Actors
             Parallel.ForEach(message.GiftOrders, async giftOrder =>
             {
                 var gift = await _elfActorRef.Ask<Gift>(new ElfMessages.ProcessGiftOrder(giftOrder));
-                var giftNeededWrappingPaper = await _elfActorRef.Ask<int>(new ElfMessages.ComputeNeededGiftPaper(gift));
+                var giftMaterials = await _elfActorRef.Ask<GiftMaterials>(new ElfMessages.ComputeNeededMaterials(gift));
 
-                _neededGiftPaper += giftNeededWrappingPaper;
+                _neededGiftPaper += giftMaterials.WrappingPaper;
+                _neededRibbon += giftMaterials.Ribbon;
 
-                Console.WriteLine("Needed gift paper: {0}", _neededGiftPaper);
+                Console.WriteLine("[TOTAL] Needed gift paper: {0} and needed ribbon: {1}", _neededGiftPaper, _neededRibbon);
             });
         }
     }

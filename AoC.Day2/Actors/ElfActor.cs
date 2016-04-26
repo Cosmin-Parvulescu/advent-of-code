@@ -4,7 +4,7 @@ using AoC.Day2.Messages;
 
 namespace AoC.Day2.Actors
 {
-    public class ElfActor : TypedActor, IHandle<ElfMessages.ProcessGiftOrder>, IHandle<ElfMessages.ComputeNeededGiftPaper>
+    public class ElfActor : TypedActor, IHandle<ElfMessages.ProcessGiftOrder>, IHandle<ElfMessages.ComputeNeededMaterials>
     {
         public void Handle(ElfMessages.ProcessGiftOrder message)
         {
@@ -17,9 +17,23 @@ namespace AoC.Day2.Actors
             Sender.Tell(new Gift(length, width, height), Self);
         }
 
-        public void Handle(ElfMessages.ComputeNeededGiftPaper message)
+        public void Handle(ElfMessages.ComputeNeededMaterials message)
         {
-            Sender.Tell(ComputeNeededPaperForGift(message.Gift), Self);
+            Sender.Tell(ComputeNeededMaterialsForGift(message.Gift), Self);
+        }
+
+        private GiftMaterials ComputeNeededMaterialsForGift(Gift gift)
+        {
+            var neededPaper = ComputeNeededPaperForGift(gift);
+            var neededRibbon = ComputeNeededRibbonForGift(gift);
+
+            return new GiftMaterials(neededRibbon, neededPaper);
+        }
+
+        private int ComputeNeededRibbonForGift(Gift gift)
+        {
+            var material = GetSmallestSideParameter(gift) + gift.Length * gift.Height * gift.Width;
+            return material;
         }
 
         private int ComputeNeededPaperForGift(Gift gift)
@@ -36,6 +50,12 @@ namespace AoC.Day2.Actors
         {
             var orderedSideLengths = new[] { gift.Length, gift.Width, gift.Height }.OrderBy(v => v);
             return orderedSideLengths.ElementAt(0) * orderedSideLengths.ElementAt(1);
+        }
+
+        private int GetSmallestSideParameter(Gift gift)
+        {
+            var orderedSideLengths = new[] { gift.Length, gift.Width, gift.Height }.OrderBy(v => v);
+            return 2 * orderedSideLengths.ElementAt(0) + 2 * orderedSideLengths.ElementAt(1);
         }
     }
 }

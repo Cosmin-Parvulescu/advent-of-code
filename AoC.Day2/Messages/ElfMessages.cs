@@ -12,11 +12,11 @@
             }
         }
 
-        public class ComputeNeededGiftPaper
+        public class ComputeNeededMaterials
         {
             public Gift Gift { get; }
 
-            public ComputeNeededGiftPaper(Gift gift)
+            public ComputeNeededMaterials(Gift gift)
             {
                 Gift = gift;
             }

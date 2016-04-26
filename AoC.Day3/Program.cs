@@ -10,13 +10,13 @@ namespace AoC.Day3
         static void Main(string[] args)
         {
             var actorSystem = ActorSystem.Create("santas-drunk-helper");
-            var santasGpsActorRef = actorSystem.ActorOf(Props.Create(() => new SantasGps()));
+            var santasGpsRef = actorSystem.ActorOf(Props.Create(() => new SantasGps()));
 
             var inputPath = Path.Combine(Environment.CurrentDirectory, @"App_Data\input.txt");
             var santasPath = File.ReadAllText(inputPath);
 
             foreach (var instruction in santasPath)
-                santasGpsActorRef.Tell(instruction);
+                santasGpsRef.Tell(new Messages.SantasGpsMessages.ReceivedInstruction(instruction));
 
             actorSystem.WhenTerminated.Wait();
         }

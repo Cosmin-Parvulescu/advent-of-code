@@ -10,26 +10,21 @@ namespace AoC.Day3.Actors
     {
         public void Handle(SantasGpsMessages.ReceivedInstruction message)
         {
-            var direction = default(GpsDirection);
-
             switch (message.Instruction)
             {
                 case '^':
-                    direction = GpsDirection.North;
+                    Self.Tell(new SantasGpsMessages.MoveSledge(GpsDirection.North));
                     break;
                 case 'v':
-                    direction = GpsDirection.South;
+                    Self.Tell(new SantasGpsMessages.MoveSledge(GpsDirection.South));
                     break;
                 case '<':
-                    direction = GpsDirection.West;
+                    Self.Tell(new SantasGpsMessages.MoveSledge(GpsDirection.West));
                     break;
                 case '>':
-                    direction = GpsDirection.East;
+                    Self.Tell(new SantasGpsMessages.MoveSledge(GpsDirection.East));
                     break;
             }
-
-            if (direction == default(GpsDirection))
-                Self.Tell(new SantasGpsMessages.MoveSledge(direction));
         }
 
         public void Handle(SantasGpsMessages.MoveSledge message)

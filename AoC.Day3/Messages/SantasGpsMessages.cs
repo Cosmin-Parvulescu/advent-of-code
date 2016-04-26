@@ -14,13 +14,22 @@ namespace AoC.Day3.Messages
             }
         }
 
-        public class MoveSledge
-        {
-            public GpsDirection GpsDirection { get; private set; }
+        public class FinishedReceivingInstructions { }
 
-            public MoveSledge(GpsDirection gpsDirection)
+        public class Inform
+        {
+            public Inform(GpsDirection direction)
             {
-                GpsDirection = gpsDirection;
+                Direction = direction;
+            }
+
+            public GpsDirection Direction { get; private set; }
+        }
+
+        public class FinishedRoute
+        {
+            public FinishedRoute()
+            {
             }
         }
     }

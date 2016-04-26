@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{51B87CC9-D299-46B7-BBBB-83057136A7C5}</ProjectGuid>
+    <ProjectGuid>{8FC5C766-4F69-4F94-A522-71251CAAC9B0}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AoC.Day1</RootNamespace>
-    <AssemblyName>AoC.Day1</AssemblyName>
+    <RootNamespace>AoC.Day2</RootNamespace>
+    <AssemblyName>AoC.Day2</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -55,23 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Actors\ElevatorActor.cs" />
-    <Compile Include="Actors\ElevatorDisplayActor.cs" />
-    <Compile Include="Actors\ElevatorLoggerActor.cs" />
-    <Compile Include="Actors\SantaActor.cs" />
-    <Compile Include="Messages\ElevatorMessages.cs" />
-    <Compile Include="Messages\SantaMessages.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_Data\input.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("AoC.Day1")]
+[assembly: AssemblyTitle("AoC.Core")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("AoC.Day1")]
+[assembly: AssemblyProduct("AoC.Core")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 
-[assembly: Guid("51b87cc9-d299-46b7-bbbb-83057136a7c5")]
+[assembly: Guid("c5559667-4ffe-43f4-9895-b73ecdf2b9aa")]
 
 // Version information for an assembly consists of the following four values:
 //
